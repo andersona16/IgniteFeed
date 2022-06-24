@@ -6,6 +6,45 @@ import styles from "./App.module.css";
 
 import "./global.css";
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/andersona16.png",
+      name: "Anderson Araujo",
+      role: "Front end",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publisheAt: new Date("2022-06-24 20:00:00"),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/gui10l1.png",
+      name: "Guilherme",
+      role: "FullStack",
+    },
+    content: [
+      { type: "paragraph", content: "Fala galeraa 👋" },
+      {
+        type: "paragraph",
+        content:
+          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+      },
+      { type: "link", content: "jane.design/doctorcare" },
+    ],
+    publisheAt: new Date("2022-06-24 10:00:00"),
+  },
+];
+
 export function App() {
   return (
     <>
@@ -14,11 +53,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Anderson"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aut molestiae facere, aliquam odit quis incidunt rem, recusandae nulla dolore eligendi iusto voluptatibus nobis? Vitae aspernatur autem magnam optio perspiciatis?"
-          />
-          <Post author="James Bond" content="Esse é o post do James Bond" />
+          {posts.map((post) => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publisheAt={post.publisheAt}
+              />
+            );
+          })}
         </main>
       </div>
     </>
